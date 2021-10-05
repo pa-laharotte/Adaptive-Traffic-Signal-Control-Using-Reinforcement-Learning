@@ -2,7 +2,7 @@
 Author : Tej Patel
 Contact: tej18121995@gmail.com
 '''
-
+#%%
 from __future__ import absolute_import
 from __future__ import print_function
 from sumolib import checkBinary
@@ -15,13 +15,14 @@ import random
 import traci
 import random
 import numpy as np
+from tensorflow import keras 
 import keras
 import h5py
 from collections import deque
 from keras.layers import Input, Conv2D, Flatten, Dense
 from keras.models import Model
 
-
+#%% Class dedicated to RL
 class DQNAgent:
     def __init__(self):
         self.gamma = 0.95   # discount rate
@@ -85,6 +86,7 @@ class DQNAgent:
         self.model.save_weights(name)
 
 
+#%% Class dedicated to SUMO agents
 class SumoIntersection:
     def __init__(self):
         # we need to import python modules from the $SUMO_HOME/tools directory
@@ -218,7 +220,7 @@ class SumoIntersection:
 
         return [position, velocity, lgts]
 
-
+#%% What happend when the current python script is executed as a main python file
 if __name__ == '__main__':
     sumoInt = SumoIntersection()
     # this script has been called from the command line. It will start sumo as a
@@ -391,3 +393,5 @@ if __name__ == '__main__':
         traci.close(wait=False)
 
 sys.stdout.flush()
+
+# %%
