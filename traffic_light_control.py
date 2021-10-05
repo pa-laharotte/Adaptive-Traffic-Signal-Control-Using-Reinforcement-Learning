@@ -1,6 +1,10 @@
 '''
 Author : Tej Patel
 Contact: tej18121995@gmail.com
+
+Modifications: 
+pierre-antoine.laharotte
+2021/10/05
 '''
 #%%
 from __future__ import absolute_import
@@ -16,11 +20,11 @@ import traci
 import random
 import numpy as np
 from tensorflow import keras 
-import keras
+#import keras
 import h5py
 from collections import deque
-from keras.layers import Input, Conv2D, Flatten, Dense
-from keras.models import Model
+from tensorflow.keras.layers import Input, Conv2D, Flatten, Dense
+from tensorflow.keras.models import Model
 
 #%% Class dedicated to RL
 class DQNAgent:
@@ -54,7 +58,7 @@ class DQNAgent:
 
         model = Model(inputs=[input_1, input_2, input_3], outputs=[x])
         model.compile(optimizer=keras.optimizers.RMSprop(
-            lr=self.learning_rate), loss='mse')
+            learning_rate=self.learning_rate), loss='mse')
 
         return model
 
